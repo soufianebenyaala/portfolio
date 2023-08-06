@@ -1,5 +1,7 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
+import '../generated/locale_keys.g.dart';
 import '../model/projects_model.dart';
 
 class ListProjects extends StatelessWidget {
@@ -10,7 +12,8 @@ class ListProjects extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Text("Projects", style: Theme.of(context).textTheme.titleLarge),
+        Text(LocaleKeys.projects.tr(),
+            style: Theme.of(context).textTheme.titleLarge),
         const SizedBox(
           height: 10,
         ),

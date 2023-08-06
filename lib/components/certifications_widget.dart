@@ -1,5 +1,7 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
+import '../generated/locale_keys.g.dart';
 import '../model/certifications_model.dart';
 
 class ListCertifications extends StatelessWidget {
@@ -10,7 +12,8 @@ class ListCertifications extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Text("Certifications", style: Theme.of(context).textTheme.titleLarge),
+        Text(LocaleKeys.certifications.tr(),
+            style: Theme.of(context).textTheme.titleLarge),
         const SizedBox(
           height: 10,
         ),

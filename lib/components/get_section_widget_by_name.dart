@@ -9,6 +9,7 @@ import '../components/languages_widget.dart';
 import '../components/project_widget.dart';
 import '../components/skills_widget.dart';
 import '../components/social_activites_widget.dart';
+import '../model/section_key_and_name_model.dart';
 
 class GetSectionWidgetByName extends StatelessWidget {
   final PortfolioModel? portfolio;
@@ -21,6 +22,7 @@ class GetSectionWidgetByName extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    print(sectionKeyAndNameModel.name);
     switch (sectionKeyAndNameModel.name) {
       case "Experience":
         return ListExperience(
@@ -52,12 +54,12 @@ class GetSectionWidgetByName extends StatelessWidget {
           formations: portfolio!.formations,
           key: sectionKeyAndNameModel.key,
         );
-      case "Social_activites":
+      case "Social Activities" || "Activités sociales":
         return SocialActivites(
           socialActivites: portfolio!.socialActivites,
           key: sectionKeyAndNameModel.key,
         );
-      case "Languages":
+      case "Languages" || "Langages":
         return Languages(
           languages: portfolio!.languages,
           key: sectionKeyAndNameModel.key,

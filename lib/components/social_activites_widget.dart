@@ -1,4 +1,7 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+
+import '../generated/locale_keys.g.dart';
 
 class SocialActivites extends StatelessWidget {
   final String socialActivites;
@@ -6,9 +9,12 @@ class SocialActivites extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    print(LocaleKeys.activities.tr());
+
     return Column(
       children: [
-        Text("Social Activites", style: Theme.of(context).textTheme.titleLarge),
+        Text(LocaleKeys.activities.tr(),
+            style: Theme.of(context).textTheme.titleLarge),
         const SizedBox(
           height: 10,
         ),

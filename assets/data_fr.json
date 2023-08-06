@@ -1,0 +1,239 @@
+{
+  "Experience": [
+    {
+      "title": "Ingénieur mobile",
+      "enterprise": "Carnelian Digital Innovation",
+      "start_date": "August 2022",
+      "end_date": "January 2023",
+      "place": "Tunis",
+      "content": [
+        "Created a hospital waste collection app using Clean Architecture, cubit, and Flutter. The app was designed to be user-friendly and featured efficient state management, making it easy for healthcare professionals to track their waste collection and arrange for disposal. With this app, chemical groups could easily locate and request hospital waste for their use.",
+        "developed a mobile counseling app for Citrine, enabling students to track course progress, participate in activities, and complete surveys. The app was designed to be user-friendly and accessible, providing students with the support they needed to succeed."
+      ]
+    },
+    {
+      "title": "Full Stack Flutter/Python",
+      "enterprise": "Tecos",
+      "start_date": "February 2022",
+      "end_date": "July 2022",
+      "place": "France/Remote",
+      "content": [
+        "Learned the basics of mobile development using Flutter and Flask, as well as gaining some experience with AWS services",
+        "Developed and implementated a loyalty application that utilized blockchain technology (Ethereum) and tokens as loyalty points. This experience allowed me to develop my skills in mobile development and gain an understanding of cutting-edge technologies such as blockchain."
+      ]
+    },
+    {
+      "title": "Game developer",
+      "enterprise": "Ovice",
+      "start_date": "August 2021",
+      "end_date": "",
+      "place": "Monastir/Remote",
+      "content": [
+        "Learned the basics of game development using Unity",
+        "Developed of an enemy AI system for non-player characters as part of a game development project. This experience allowed me to hone my skills in programming and game design, as well as gain a deeper understanding of AI systems in gaming.",
+        "Contribution to the development of a 3D third-person game using Unity. This experience allowed me to gain hands-on experience with game development, including level design, asset creation, and implementation of game mechanics."
+      ]
+    },
+    {
+      "title": "Web developer ",
+      "enterprise": "DEV Tweaks",
+      "start_date": "August 2020",
+      "end_date": "",
+      "place": "Djerba",
+      "content": [
+        "Learned the basics of backend development using PHP and database by MYSQL",
+        "Created a classic e-commerce site, gaining practical experience in web development, server-side scripting, and database management."
+      ]
+    }
+  ],
+  "Projects": [
+    {
+      "title": "E-commerce website",
+      "type": "Projet stagiaire",
+      "content": "Develop an online store to present, market and rent offices and coworking spaces to our customers"
+    },
+    {
+      "title": "Rental website",
+      "type": "Projet de fin d'année",
+      "content": "Development of websites to find a building closest to you for sale or for rent"
+    },
+    {
+      "title": "library website",
+      "type": "Projet académique",
+      "content": "Developed a website for library management, including booking and returning books, with an administration dashboard"
+    },
+    {
+      "title": "travel agency app",
+      "type": "Projet indépendant",
+      "content": "Create a mobile app on their website"
+    }
+  ],
+  "Education": [
+    {
+      "title": "Engineer Diploma",
+      "type": "Computer Science",
+      "school": "Sfax National Engineering School",
+      "start_date": "2019",
+      "end_date": "2022",
+      "place": "Sfax"
+    },
+    {
+      "title": "Preparatory Stage ",
+      "type": "Technology",
+      "school": "Preparatory Institute for Engineering Studies of Nabeul",
+      "start_date": "2017",
+      "end_date": "2019",
+      "place": "Nabuel"
+    },
+    {
+      "title": "Baccalaureate Diploma",
+      "type": "Technology",
+      "school": "Houmt Souk High School",
+      "start_date": "2016",
+      "end_date": "2017",
+      "place": "Djerba"
+    }
+  ],
+  "Skills": [
+    {
+      "title": "Programming language",
+      "content": [
+        {
+          "skill": "Dart",
+          "icon": "assets/images/icons/dart.png"
+        },
+        {
+          "skill": "JavaScript",
+          "icon": "assets/images/icons/js.png"
+        },
+
+        {
+          "skill": "PHP",
+          "icon": "assets/images/icons/php.png"
+        }
+      ]
+    },
+    {
+      "title": "Database",
+      "content": [
+        {
+          "skill": "MySQL",
+          "icon": "assets/images/icons/mysql.png"
+        },
+        {
+          "skill": "Firebase",
+          "icon": "assets/images/icons/firebase.png"
+        }
+      ]
+    },
+    {
+      "title": "Web development",
+      "content": [
+        {
+          "skill": "Html",
+          "icon": "assets/images/icons/html.png"
+        },
+        {
+          "skill": "CSS",
+          "icon": "assets/images/icons/css.png"
+        },
+        {
+          "skill": "Bootstrap",
+          "icon": "assets/images/icons/bootstrap.png"
+        },
+        {
+          "skill": "Laravel",
+          "icon": "assets/images/icons/laravel.png"
+        },
+        {
+          "skill": "Reactjs",
+          "icon": "assets/images/icons/reactjs.png"
+        },
+        {
+          "skill": "Symfony",
+          "icon": "assets/images/icons/symfony.png"
+        }
+      ]
+    },
+    {
+      "title": "Mobile development",
+      "content": [
+        {
+          "skill": "Flutter",
+          "icon": "assets/images/icons/flutter.png"
+        }
+      ]
+    },
+    {
+      "title": "Architecture",
+      "content": [
+        {
+          "skill": "Microservice",
+          "icon": "assets/images/icons/microservice.png"
+        },
+        {
+          "skill": "MVC",
+          "icon": "assets/images/icons/MVC.png"
+        }
+      ]
+    },
+    {
+      "title": "Tools",
+      "content": [
+        {
+          "skill": "Git",
+          "icon": "assets/images/icons/git.png"
+        },
+        {
+          "skill": "Github",
+          "icon": "assets/images/icons/github.png"
+        },
+        {
+          "skill": "Gitlab",
+          "icon": "assets/images/icons/gitlab.png"
+        }
+      ]
+    }
+  ],
+  "Certifications": [
+    {
+      "title": "Introduction to python programming",
+      "link": "https://www.certiport.com/Portal/Pages/PrintTranscriptInfo.aspx?action=Cert&format=pdf&id=395",
+      "image": "assets/images/certifications/certiport.png",
+      "date": "Jan 2020",
+      "source": "Certiport - Une entreprise Pearson VUE"
+    },
+    {
+      "title": "TOEIC institutional certification (score : 530/990)",
+      "link": null,
+      "date": null,
+      "image": "assets/images/certifications/TOEIC.png",
+      "source": "TOEIC"
+    }
+  ],
+  "Formations": [
+    {
+      "title": "Frontend Fundamentals",
+      "link": "https://www.credential.net/2b00e7f1-5074-4b6b-b0f8-bb2f55bd1b56#gs.27crh9",
+      "image": "assets/images/formations/coursera.png",
+      "date": "Jan 2020",
+      "source": "Pirple"
+    },
+    {
+      "title": "Keeping Up with the JavaScript: ES6",
+      "link": "https://www.pirple.com/certificates/gc2nmvcbk9",
+      "image": "assets/images/formations/pirple.png",
+      "date": "May 2021",
+      "source": "Pirple"
+    },
+    {
+      "title": "Web apps for everyone (PHP/JSON/JQuery/SQL)",
+      "link": "https://www.coursera.org/account/accomplishments/specialization/3G4B8K9QB22A",
+      "image": "assets/images/formations/coursera.png",
+      "date": "Feb 2021",
+      "source": "Coursera"
+    }
+  ],
+  "Social_activites": "member of IEEE ENIS Club and Microsoft Tech Club ENIS also participated in numerous competitions (e.g., IEEEXtreme, Lorem Ipsum Challenge...) and hackathons (e.g., National Microsoft Technologies Camp (NMTC), GDG Sfax Dev Fast 2020...). Finally, I volunteered in creating web site for “Projects for Life” community.",
+  "Languages": ["🇹🇳 Arabic", "🇺🇸 English", "🇫🇷 French"]
+}

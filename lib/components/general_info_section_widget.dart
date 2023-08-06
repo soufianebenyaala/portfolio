@@ -1,5 +1,7 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:portfolio/components/social_media_contact_widget.dart';
+import 'package:portfolio/generated/locale_keys.g.dart';
 
 import '../util/utils.dart';
 import 'rounded_button_widget.dart';
@@ -14,9 +16,6 @@ class GeneralInfoSectionWidget extends StatelessWidget {
     return Card(
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 30),
-        //decoration: const BoxDecoration(
-        //  color: kPrimaryColor,
-        //borderRadius: BorderRadius.all(Radius.circular(20))),
         child: Column(
           children: [
             SizedBox(
@@ -32,17 +31,17 @@ class GeneralInfoSectionWidget extends StatelessWidget {
             ),
             const SizedBox(height: 10),
             Text(
-              "Hello,",
+              LocaleKeys.hello.tr(),
               style: Theme.of(context).textTheme.titleMedium,
             ),
             const SizedBox(height: 8),
             Text(
-              "I'm Soufiane Ben Yaala",
+              LocaleKeys.myName.tr(),
               style: Theme.of(context).textTheme.titleLarge,
             ),
             const SizedBox(height: 8),
             Text(
-              "Computer science engineering",
+              LocaleKeys.field.tr(),
               style: Theme.of(context).textTheme.titleLarge,
             ),
             const SizedBox(height: 10),
@@ -52,12 +51,12 @@ class GeneralInfoSectionWidget extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 RoundedButton(
-                    text: "Hire Me",
+                    text: LocaleKeys.hireMe.tr(),
                     press: (context) {
                       Utils.emailSender();
                     }),
                 RoundedButton(
-                    text: "Download CV",
+                    text: LocaleKeys.downloadCv.tr(),
                     press: (context) {
                       //  Utils.downloadPdf();
                     }),

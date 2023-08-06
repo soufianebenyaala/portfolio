@@ -1,5 +1,7 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
+import '../generated/locale_keys.g.dart';
 import '../model/formations_model.dart';
 
 class ListFormations extends StatelessWidget {
@@ -10,7 +12,8 @@ class ListFormations extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Text("Formations", style: Theme.of(context).textTheme.titleLarge),
+        Text(LocaleKeys.formations.tr(),
+            style: Theme.of(context).textTheme.titleLarge),
         const SizedBox(
           height: 10,
         ),

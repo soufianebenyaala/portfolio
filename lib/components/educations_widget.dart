@@ -1,5 +1,8 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:portfolio/model/education_model.dart';
+
+import '../generated/locale_keys.g.dart';
 
 class ListEducations extends StatelessWidget {
   final List<EducationModel> educations;
@@ -9,7 +12,8 @@ class ListEducations extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Text("Education", style: Theme.of(context).textTheme.titleLarge),
+        Text(LocaleKeys.education.tr(),
+            style: Theme.of(context).textTheme.titleLarge),
         const SizedBox(
           height: 10,
         ),

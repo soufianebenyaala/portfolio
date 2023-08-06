@@ -1,54 +1,40 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:portfolio/bloc/portfolio_bloc.dart';
+import 'package:portfolio/generated/locale_keys.g.dart';
+import 'package:portfolio/util/shared_prefes_manager.dart';
 
 import '../components/general_info_section_widget.dart';
 import '../components/get_section_widget_by_name.dart';
 import '../components/navigation_section_widget.dart';
-import '../model/portfolio_model.dart';
 import '../model/section_key_and_name_model.dart';
+import '../util/utils.dart';
 
-class PortfolioScreen extends StatefulWidget {
+class PortfolioScreen extends StatelessWidget {
   const PortfolioScreen({super.key});
 
   @override
-  State<PortfolioScreen> createState() => _PortfolioScreenState();
-}
-
-class _PortfolioScreenState extends State<PortfolioScreen> {
-  PortfolioModel? portfolio;
-  ScrollController scrollController = ScrollController();
-  final GlobalKey<ScaffoldState> globalKey = GlobalKey();
-
-  List<SectionKeyAndNameModel> sectionKeyAndNameList = [
-    SectionKeyAndNameModel(name: "Experience"),
-    SectionKeyAndNameModel(name: "Projects"),
-    SectionKeyAndNameModel(name: "Education"),
-    SectionKeyAndNameModel(name: "Skills"),
-    SectionKeyAndNameModel(name: "Certifications"),
-    SectionKeyAndNameModel(name: "Formations"),
-    SectionKeyAndNameModel(name: "Social_activites"),
-    SectionKeyAndNameModel(name: "Languages"),
-  ];
-
-  Future<String> _loadJsonAsset() async {
-    return await rootBundle.loadString('assets/data.json');
-  }
-
-  Future<void> _parseJsonData() async {
-    String jsonString = await _loadJsonAsset();
-    setState(() {
-      portfolio = PortfolioModel.fromJson(jsonString);
-    });
-  }
-
-  @override
-  void initState() {
-    super.initState();
-    _parseJsonData();
-  }
-
-  @override
   Widget build(BuildContext context) {
+    ScrollController scrollController = ScrollController();
+    GlobalKey<ScaffoldState> globalKey = GlobalKey();
+
+    List<SectionKeyAndNameModel> sectionKeyAndNameList = [
+      SectionKeyAndNameModel(name: LocaleKeys.experience.tr()),
+      SectionKeyAndNameModel(name: LocaleKeys.projects.tr()),
+      SectionKeyAndNameModel(name: LocaleKeys.education.tr()),
+      SectionKeyAndNameModel(name: LocaleKeys.skills.tr()),
+      SectionKeyAndNameModel(name: LocaleKeys.certifications.tr()),
+      SectionKeyAndNameModel(name: LocaleKeys.formations.tr()),
+      SectionKeyAndNameModel(name: LocaleKeys.activities.tr()),
+      SectionKeyAndNameModel(name: LocaleKeys.languages.tr()),
+    ];
+    void handleLang(String lang) {
+      context.setLocale(Locale(lang));
+      SharedPrefsManager.setLanguage(lang);
+      BlocProvider.of<PortfolioBloc>(context).add(GetPortfolioEvent());
+    }
+
     return SafeArea(
       child: Scaffold(
           drawerEnableOpenDragGesture: false,
@@ -69,14 +55,33 @@ class _PortfolioScreenState extends State<PortfolioScreen> {
                     ),
                     child: Row(
                       children: [
-                        const SizedBox(),
+                        PopupMenuButton(
+                          constraints: const BoxConstraints(maxWidth: 60),
+                          itemBuilder: (context) => [
+                            PopupMenuItem(
+                              onTap: () {
+                                handleLang('fr');
+                              },
+                              child: const Text("FR"),
+                            ),
+                            PopupMenuItem(
+                              onTap: () {
+                                handleLang('en');
+                              },
+                              child: const Text("EN"),
+                            ),
+                          ],
+                        ),
+                        const Expanded(child: SizedBox()),
                         const Expanded(child: SizedBox()),
                         Text("Portfolio",
                             style: Theme.of(context).textTheme.titleLarge),
                         const Expanded(child: SizedBox()),
-                        const IconButton(
+                        IconButton(
                             color: kDefaultIconDarkColor,
-                            onPressed: Utils.sharePressed,
+                            onPressed: () {
+                              Utils.onShareXFileFromAssets(context);
+                            },
                             icon: Icon(Icons.share))
                       ],
                     ),
@@ -94,40 +99,55 @@ class _PortfolioScreenState extends State<PortfolioScreen> {
           ),
           body: Padding(
               padding: const EdgeInsets.only(right: 10, left: 10),
-              child: (portfolio != null)
-                  ? ListView(
+              child: BlocBuilder<PortfolioBloc, PortfolioState>(
+                builder: (context, state) {
+                  if (state is GetPortfolioErrorState) {
+                    return Center(
+                      child: Text(state.message),
+                    );
+                  }
+                  if (state is GetPortfolioLoadingState) {
+                    return const Center(
+                      child: CircularProgressIndicator(),
+                    );
+                  }
+                  if (state is GetPortfolioLoadedState) {
+                    return ListView(
                       controller: scrollController,
                       children: [
                         const GeneralInfoSectionWidget(),
                         const SizedBox(
                           height: 10,
                         ),
-                        Column(
-                          children: List.generate(
-                            sectionKeyAndNameList.length,
-                            (index) => Column(
-                              children: [
-                                Card(
-                                  child: Padding(
-                                    padding: const EdgeInsets.symmetric(
-                                        horizontal: 5, vertical: 30),
-                                    child: GetSectionWidgetByName(
-                                      sectionKeyAndNameModel:
-                                          sectionKeyAndNameList[index],
-                                      portfolio: portfolio,
-                                    ),
+                        ListView.builder(
+                          shrinkWrap: true,
+                          physics: const NeverScrollableScrollPhysics(),
+                          itemCount: sectionKeyAndNameList.length,
+                          itemBuilder: (context, index) => Column(
+                            children: [
+                              Card(
+                                child: Padding(
+                                  padding: const EdgeInsets.symmetric(
+                                      horizontal: 5, vertical: 30),
+                                  child: GetSectionWidgetByName(
+                                    sectionKeyAndNameModel:
+                                        sectionKeyAndNameList[index],
+                                    portfolio: state.portfolio,
                                   ),
                                 ),
-                                const SizedBox(
-                                  height: 10,
-                                ),
-                              ],
-                            ),
+                              ),
+                              const SizedBox(
+                                height: 10,
+                              ),
+                            ],
                           ),
                         ),
                       ],
-                    )
-                  : const SizedBox())),
+                    );
+                  }
+                  return const SizedBox();
+                },
+              ))),
     );
   }
 }

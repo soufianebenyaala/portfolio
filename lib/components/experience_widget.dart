@@ -1,8 +1,11 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:readmore/readmore.dart';
 
 import 'package:portfolio/model/experience_model.dart';
+
+import '../generated/locale_keys.g.dart';
 
 class ListExperience extends StatelessWidget {
   final List<ExperienceModel> experiences;
@@ -12,7 +15,8 @@ class ListExperience extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Text("Experience", style: Theme.of(context).textTheme.titleLarge),
+        Text(LocaleKeys.experience.tr(),
+            style: Theme.of(context).textTheme.titleLarge),
         const SizedBox(
           height: 10,
         ),
