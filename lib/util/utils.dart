@@ -7,6 +7,62 @@ import 'package:url_launcher/url_launcher.dart';
 import 'package:share_plus/share_plus.dart';
 
 abstract class Utils {
+    static Future<FilePickerResult?> showFilesPicker() async {
+    PermissionStatus permissionStatus = await getStoragePermission();
+    if (permissionStatus == PermissionStatus.granted) {
+      return await FilePicker.platform.pickFiles(
+        allowMultiple: true,
+      );
+    } else {
+      handleInvalidPermissions(
+          permissionStatus: permissionStatus, typePermission: "storage");
+      return null;
+    }
+  }
+
+  static Future<PermissionStatus> getStoragePermission() async {
+    PermissionStatus permission = await Permission.storage.status;
+    if (permission != PermissionStatus.granted &&
+        permission != PermissionStatus.permanentlyDenied) {
+      PermissionStatus permissionStatus = await Permission.storage.request();
+      return permissionStatus;
+    } else {
+      return permission;
+    }
+  }
+
+  static Future<void> askContactPermissions() async {
+    PermissionStatus permissionStatus = await getContactPermission();
+    if (permissionStatus == PermissionStatus.granted) {
+      Utils.openPageWithRightSlide(GetPhoneContactsPage());
+    } else {
+      handleInvalidPermissions(
+          permissionStatus: permissionStatus, typePermission: "contact");
+    }
+  }
+
+  static Future<PermissionStatus> getContactPermission() async {
+    PermissionStatus permission = await Permission.contacts.status;
+    if (permission != PermissionStatus.granted &&
+        permission != PermissionStatus.permanentlyDenied) {
+      PermissionStatus permissionStatus = await Permission.contacts.request();
+      return permissionStatus;
+    } else {
+      return permission;
+    }
+  }
+
+  static void handleInvalidPermissions(
+      {required PermissionStatus permissionStatus,
+      required String typePermission}) {
+    if (permissionStatus == PermissionStatus.denied) {
+      OverlayMessageUtils.showErrorOverlayMessage(
+          'Access to $typePermission data denied . please add permission !');
+    } else if (permissionStatus == PermissionStatus.permanentlyDenied) {
+      OverlayMessageUtils.showErrorOverlayMessage(
+          'Access to $typePermission data permanently denied. please add permission !');
+    }
+  }
   static Future<void> openWebsite(
       {required String host, required String path}) async {
     final Uri websiteLaunchUri = Uri(
